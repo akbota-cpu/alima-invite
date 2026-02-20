@@ -19,7 +19,7 @@
     <p class="subtitle">С любовью приглашаем вас</p>
   </section>
 
-  <section class="block">
+  <section class="block fade-in">
     <p>
       Дорогие родные и близкие,<br>
       мы будем рады разделить с вами<br>
@@ -27,12 +27,12 @@
     </p>
   </section>
 
-  <section class="block">
+  <section class="block fade-in">
     <h2>Дата и время</h2>
     <p>22 марта 2026 года<br>Начало в 18:00</p>
   </section>
 
-  <section class="block">
+  <section class="block fade-in">
     <h2>Место проведения</h2>
     <p>
       г. Алматы<br>
@@ -40,12 +40,12 @@
     </p>
   </section>
 
-  <section class="block">
+  <section class="block fade-in">
     <h2>Дресс-код</h2>
     <p>Светлые, бежевые оттенки</p>
   </section>
 
-  <section class="block">
+  <section class="block fade-in">
     <a class="btn" href="https://wa.me/77000000000" target="_blank">
       Подтвердить присутствие
     </a>
@@ -54,6 +54,30 @@
   <footer>
     <p>Будем счастливы видеть вас 🤍</p>
   </footer>
+
+
+  <script>
+  const faders = document.querySelectorAll('.fade-in');
+
+  const appearOptions = {
+    threshold: 0.2
+  };
+
+  const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) {
+        return;
+      } else {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, appearOptions);
+
+  faders.forEach(fader => {
+    appearOnScroll.observe(fader);
+  });
+</script>
 
 </body>
 </html>
