@@ -14,6 +14,27 @@
 <body>
 
   <section class="hero">
+    <section class="block fade-in">
+  <h2>До события осталось</h2>
+  <div class="countdown">
+    <div>
+      <span id="days">00</span>
+      <p>дней</p>
+    </div>
+    <div>
+      <span id="hours">00</span>
+      <p>часов</p>
+    </div>
+    <div>
+      <span id="minutes">00</span>
+      <p>минут</p>
+    </div>
+    <div>
+      <span id="seconds">00</span>
+      <p>секунд</p>
+    </div>
+  </div>
+</section>
     <p class="date">22 • 03 • 2026</p>
     <h1>Alima</h1>
     <p class="subtitle">С любовью приглашаем вас</p>
@@ -77,6 +98,31 @@
   faders.forEach(fader => {
     appearOnScroll.observe(fader);
   });
+</script>
+
+<script>
+  const eventDate = new Date("March 22, 2026 18:00:00").getTime();
+
+  const timer = setInterval(function() {
+
+    const now = new Date().getTime();
+    const distance = eventDate - now;
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    document.getElementById("days").innerText = days;
+    document.getElementById("hours").innerText = hours;
+    document.getElementById("minutes").innerText = minutes;
+    document.getElementById("seconds").innerText = seconds;
+
+    if (distance < 0) {
+      clearInterval(timer);
+    }
+
+  }, 1000);
 </script>
 
 </body>
