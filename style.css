@@ -98,3 +98,27 @@ footer {
   opacity: 1;
   transform: translateY(0);
 }
+
+.countdown {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
+
+.countdown div {
+  text-align: center;
+}
+
+.countdown span {
+  font-family: 'Cormorant', serif;
+  font-size: 40px;
+  font-weight: 300;
+  display: block;
+}
+
+.countdown p {
+  font-size: 14px;
+  margin-top: 5px;
+}
