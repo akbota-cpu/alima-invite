@@ -197,24 +197,33 @@ for (let i = 0; i < 25; i++) {
 
 
 <script>
+document.addEventListener("DOMContentLoaded", function() {
+
   const welcome = document.getElementById("welcome-screen");
   const openBtn = document.getElementById("open-invite");
   const music = document.getElementById("bg-music");
 
   openBtn.addEventListener("click", function() {
+
+    welcome.style.transition = "0.4s";
     welcome.style.opacity = "0";
+
     setTimeout(() => {
       welcome.style.display = "none";
     }, 400);
 
     music.play();
+
   });
+
+});
 </script>
 
 
   
 </body>
 </html>
+
 
 
 
