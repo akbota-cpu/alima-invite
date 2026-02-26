@@ -237,3 +237,24 @@ footer {
   transform: translateY(-3px);
   box-shadow: 0 10px 25px rgba(0,0,0,0.1);
 }
+
+
+
+.music-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: none;
+  background: white;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  cursor: pointer;
+  font-size: 18px;
+  transition: 0.3s;
+}
+
+.music-btn:hover {
+  transform: scale(1.1);
+}
