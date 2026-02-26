@@ -158,6 +158,10 @@ for (let i = 0; i < 25; i++) {
 }
 </script>
 
+
+
+
+  
 <audio id="bg-music" loop>
   <source src="music.mp3" type="audio/mpeg">
 </audio>
@@ -168,20 +172,16 @@ for (let i = 0; i < 25; i++) {
   const music = document.getElementById("bg-music");
   const btn = document.getElementById("music-toggle");
 
-  let isPlaying = false;
-
-  // Запуск после первого клика на страницу
-  document.addEventListener("click", function startMusic() {
-    if (!isPlaying) {
-      music.play();
-      isPlaying = true;
+  // Автозапуск при первом касании
+  document.body.addEventListener("click", function () {
+    if (music.paused) {
+      music.play().catch(err => console.log(err));
     }
-    document.removeEventListener("click", startMusic);
-  });
+  }, { once: true });
 
-  // Кнопка включить/выключить
   btn.addEventListener("click", function (e) {
     e.stopPropagation();
+
     if (music.paused) {
       music.play();
       btn.textContent = "🔊";
@@ -192,6 +192,10 @@ for (let i = 0; i < 25; i++) {
   });
 </script>
 
+
+
+  
 </body>
 </html>
+
 
