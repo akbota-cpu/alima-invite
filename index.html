@@ -162,22 +162,26 @@ for (let i = 0; i < 25; i++) {
 
 
   
+<audio id="bg-music" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<button id="music-toggle" class="music-btn">🔇</button>
+
 <script>
-const music = document.getElementById("bg-music");
-const btn = document.getElementById("music-toggle");
+  const music = document.getElementById("bg-music");
+  const btn = document.getElementById("music-toggle");
 
-// Музыка НЕ стартует автоматически
-btn.addEventListener("click", function () {
-
-  if (music.paused) {
-    music.play();
-    btn.textContent = "🔊";
-  } else {
-    music.pause();
-    btn.textContent = "🔇";
-  }
-
-});
+  btn.addEventListener("click", function () {
+    if (music.paused) {
+      music.play().then(() => {
+        btn.textContent = "🔊";
+      }).catch(err => console.log("Ошибка воспроизведения:", err));
+    } else {
+      music.pause();
+      btn.textContent = "🔇";
+    }
+  });
 </script>
 
 
@@ -185,6 +189,7 @@ btn.addEventListener("click", function () {
   
 </body>
 </html>
+
 
 
 
