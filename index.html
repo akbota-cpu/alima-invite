@@ -162,34 +162,22 @@ for (let i = 0; i < 25; i++) {
 
 
   
-<audio id="bg-music" loop>
-  <source src="music.mp3" type="audio/mpeg">
-</audio>
-
-<button id="music-toggle" class="music-btn">🔊</button>
-
 <script>
-  const music = document.getElementById("bg-music");
-  const btn = document.getElementById("music-toggle");
+const music = document.getElementById("bg-music");
+const btn = document.getElementById("music-toggle");
 
-  // Автозапуск при первом касании
-  document.body.addEventListener("click", function () {
-    if (music.paused) {
-      music.play().catch(err => console.log(err));
-    }
-  }, { once: true });
+// Музыка НЕ стартует автоматически
+btn.addEventListener("click", function () {
 
-  btn.addEventListener("click", function (e) {
-    e.stopPropagation();
+  if (music.paused) {
+    music.play();
+    btn.textContent = "🔊";
+  } else {
+    music.pause();
+    btn.textContent = "🔇";
+  }
 
-    if (music.paused) {
-      music.play();
-      btn.textContent = "🔊";
-    } else {
-      music.pause();
-      btn.textContent = "🔇";
-    }
-  });
+});
 </script>
 
 
@@ -197,5 +185,6 @@ for (let i = 0; i < 25; i++) {
   
 </body>
 </html>
+
 
 
