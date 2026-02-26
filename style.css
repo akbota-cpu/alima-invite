@@ -1,3 +1,10 @@
+html {
+  scroll-behavior: smooth;
+}
+
+
+
+
 * {
   margin: 0;
   padding: 0;
@@ -258,3 +265,4 @@ footer {
 .music-btn:hover {
   transform: scale(1.1);
 }
+
