@@ -158,7 +158,40 @@ for (let i = 0; i < 25; i++) {
 }
 </script>
 
+<audio id="bg-music" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
 
+<button id="music-toggle" class="music-btn">🔊</button>
+
+<script>
+  const music = document.getElementById("bg-music");
+  const btn = document.getElementById("music-toggle");
+
+  let isPlaying = false;
+
+  // Запуск после первого клика на страницу
+  document.addEventListener("click", function startMusic() {
+    if (!isPlaying) {
+      music.play();
+      isPlaying = true;
+    }
+    document.removeEventListener("click", startMusic);
+  });
+
+  // Кнопка включить/выключить
+  btn.addEventListener("click", function (e) {
+    e.stopPropagation();
+    if (music.paused) {
+      music.play();
+      btn.textContent = "🔊";
+    } else {
+      music.pause();
+      btn.textContent = "🔇";
+    }
+  });
+</script>
 
 </body>
 </html>
+
